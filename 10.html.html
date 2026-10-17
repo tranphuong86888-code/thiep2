@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thư gửi mẹ ngày 20/10</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "Segoe UI", sans-serif;
+            background: linear-gradient(135deg, #ffe4ec, #fff5f7, #ffd6e2);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #c03968;
+            font-size: 30px;
+        }
+        
+        .subtitle {
+            color: #a34b69;
+            margin-bottom: 35px;
+        }
+        /* Phong bì */
+        
+        .envelope {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            margin: 0 auto;
+            background: #f5a7bd;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 12px 30px #c65c7a40;
+            transition: transform 0.3s;
+        }
+        
+        .envelope:hover {
+            transform: translateY(-7px);
+        }
+        
+        .envelope::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: #fbd0dc;
+            clip-path: polygon(0 0, 50% 60%, 100% 0);
+            z-index: 3;
+        }
+        
+        .envelope::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: #ee8eaa;
+            clip-path: polygon(0 100%, 0 0, 50% 55%, 100% 0, 100% 100%);
+            z-index: 2;
+        }
+        
+        .heart {
+            position: absolute;
+            top: 75px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 43px;
+            z-index: 4;
+            animation: heartbeat 1s infinite;
+        }
+        
+        .click-text {
+            margin-top: 22px;
+            color: #b33f68;
+            font-weight: bold;
+            animation: fade 1.5s infinite alternate;
+        }
+        /* Lá thư */
+        
+        .letter {
+            display: none;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 30px;
+            background: #fffdf8;
+            border: 2px solid #f5c1cf;
+            border-radius: 18px;
+            box-shadow: 0 10px 35px #ad456025;
+            text-align: left;
+            animation: appear 0.8s ease;
+        }
+        
+        .letter h2 {
+            text-align: center;
+            color: #c03968;
+            line-height: 1.5;
+        }
+        
+        .letter p {
+            color: #65434d;
+            font-size: 16px;
+            line-height: 1.9;
+        }
+        
+        .signature {
+            text-align: right;
+            color: #c03968 !important;
+            font-weight: bold;
+        }
+        
+        .back-button {
+            display: block;
+            margin: 25px auto 0;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            background: #df7193;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+        }
+        
+        .back-button:hover {
+            background: #c64c75;
+        }
+        
+        .hearts {
+            position: fixed;
+            top: -30px;
+            animation: fall linear forwards;
+            pointer-events: none;
+            z-index: 10;
+        }
+        
+        @keyframes heartbeat {
+            0%,
+            100% {
+                transform: translateX(-50%) scale(1);
+            }
+            50% {
+                transform: translateX(-50%) scale(1.2);
+            }
+        }
+        
+        @keyframes fade {
+            from {
+                opacity: 0.6;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 25px;
+            }
+            .envelope {
+                width: 270px;
+                height: 180px;
+            }
+            .letter {
+                padding: 20px;
+            }
+            .letter p {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Màn hình đầu tiên -->
+        <div id="cover">
+            <h1>🌷 Chúc mừng ngày 20/10 🌷</h1>
+            <p class="subtitle">Con có một món quà nhỏ dành tặng mẹ yêu ❤️</p>
+
+            <div class="envelope" onclick="openLetter()">
+                <div class="heart">❤️</div>
+            </div>
+
+            <p class="click-text">💌 Bấm vào phong bì để mở thư 💌</p>
+        </div>
+
+        <!-- Nội dung lá thư -->
+        <div class="letter" id="letter">
+            <h2>💐 Gửi mẹ yêu quý của con 💐</h2>
+
+            <p>
+                Mẹ yêu của con!
+            </p>
+
+            <p>
+                Nhân ngày Phụ nữ Việt Nam 20/10, con muốn gửi đến mẹ những lời chúc tốt đẹp và yêu thương nhất. Con chúc mẹ luôn mạnh khỏe, vui vẻ, bình an và lúc nào cũng nở nụ cười thật tươi trên môi.
+            </p>
+
+            <p>
+                Con biết rằng để con có được ngày hôm nay, mẹ đã phải vất vả và hy sinh rất nhiều. Có những lúc con vô tâm, chưa biết quan tâm đến mẹ, thậm chí đôi khi còn làm mẹ buồn. Nhưng mẹ hãy biết rằng con luôn yêu thương và biết ơn mẹ rất nhiều.
+            </p>
+
+            <p>
+                Con không biết phải nói bao nhiêu lời mới có thể diễn tả hết tình yêu của mình dành cho mẹ. Con chỉ mong mẹ luôn khỏe mạnh, hạnh phúc và ở bên gia đình thật lâu. Sau này, con sẽ cố gắng học tập, trưởng thành và trở thành người khiến mẹ tự hào.
+            </p>
+
+            <p>
+                Cảm ơn mẹ vì đã luôn yêu thương, che chở và là chỗ dựa bình yên nhất của con. Với con, mẹ luôn là người phụ nữ tuyệt vời nhất trên thế gian này.
+            </p>
+
+            <p>
+                💗 Con yêu mẹ nhiều lắm! Chúc mẹ có một ngày 20/10 thật hạnh phúc, nhận được thật nhiều hoa, quà và những điều ngọt ngào nhất!
+            </p>
+
+            <p class="signature">
+                Con yêu của mẹ ❤️<br> Mãi yêu mẹ!
+            </p>
+
+            <button class="back-button" onclick="closeLetter()">
+            💌 Gấp thư lại
+        </button>
+        </div>
+
+    </div>
+
+    <script>
+        function openLetter() {
+            document.getElementById("cover").style.display = "none";
+            document.getElementById("letter").style.display = "block";
+
+            // Tạo hiệu ứng trái tim bay
+            for (let i = 0; i < script 25; i++) {
+                setTimeout(createHeart, i * 100);
+            }
+        }
+
+        function closeLetter() {
+            document.getElementById("letter").style.display = "none";
+            document.getElementById("cover").style.display = "block";
+        }
+
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.className = "hearts";
+            heart.textContent = ["❤️", "💕", "💗", "🌸"][Math.floor(Math.random() * 4)];
+
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = (15 + Math.random() * 20) + "px";
+            heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => heart.remove(), 6000);
+        } <
+        />
+
+        <
+        /body>
+
+        <
+        /html>
